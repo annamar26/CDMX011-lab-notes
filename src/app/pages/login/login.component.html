@@ -1,0 +1,12 @@
+<div class="login-container">
+<mat-tab-group class="matTab-container">
+
+  <mat-tab #tabHeader label="Iniciar sesión">
+    <app-login-form (userValues)="login($event, 'logIn')"></app-login-form
+  ></mat-tab>
+  <mat-tab label="Registarse"> 
+     <app-register-form (userValues)="login($event, 'signUp')"></app-register-form
+    ></mat-tab>
+
+</mat-tab-group>
+</div>
