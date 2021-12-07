@@ -1,0 +1,33 @@
+<section class="form-container" >
+  <h2 class="formTitle">Inicia sesión</h2>
+
+  <mat-form-field >
+    <input matInput type="email" #email placeholder="Correo electrónico" />
+    <mat-icon matSuffix>mail_outline</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      #password
+      placeholder="Contraseña"
+    />
+    <mat-icon matSuffix (click)="toggleVisibility()"
+    *ngIf="hide; else elseBlock"  >visibility_outlined</mat-icon
+    >
+    <ng-template matSuffix (click)="toggleVisibility()" #elseBlock
+      ><mat-icon matSuffix (click)="toggleVisibility()"
+        >visibility_off</mat-icon
+      ></ng-template
+    >
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="sendEmail({ email: email.value, password: password.value })"
+  >
+    Iniciar sesión
+  </button>
+</section>
