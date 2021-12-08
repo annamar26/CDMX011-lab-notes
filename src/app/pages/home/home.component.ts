@@ -22,18 +22,26 @@ export class HomeComponent implements OnInit {
   static getUser: any;
   constructor(private fs: FirestoreService, private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.getUser();
+    setTimeout(() => {
+      this.getNotes(this.userUid);
+    }, 1000);
+
+    // this.getNotes(this.userUid)
+  }
   logOut() {
     this.authService.logOut().then(() => (window.location.href = '/'));
   }
-  async sendContent(content: string, id: string) {
+   sendContent(content: string, id: string) {
+    this.notes = [];
     this.userNote.content = content;
     this.getUser();
     this.userNote.autor = id;
     this.userNote.time.date = new Date().toLocaleDateString();
     this.userNote.time.hour = new Date().toLocaleTimeString();
-   
-    await this.fs.addNote(this.userNote).then(() => {
+
+    this.fs.addNote(this.userNote).then(() => {
       console.log('nota creada');
 
       this.userNote = {
@@ -42,12 +50,16 @@ export class HomeComponent implements OnInit {
         autor: '',
         time: { date: '', hour: '' },
       };
-      content = ""
-      this.notes = [];
-      this.getNotes(id);
-    });
+      
+     
+    });this.notes = []
+      this.notes = this.notes.filter(
+        (note: { autor: string }) => note.autor === id
+      );
+      console.log(this.notes)
   }
   getNotes(id: string) {
+    this.notes = [];
     const allNotes: any = [];
     this.fs.getAllNotes().subscribe((res: any) => {
       res.forEach((noteData: any) => {
@@ -65,10 +77,13 @@ export class HomeComponent implements OnInit {
       this.notes = allNotes.filter(
         (note: { autor: string }) => note.autor === id
       );
+
     });
+ 
+    console.log(this.notes);
   }
-  editContent(content: string, idPost: string, userUid: string) {
-    this.fs
+  async editContent(content: string, idPost: string, userUid: string) {
+    await this.fs
       .updateNote(idPost, {
         id: idPost,
         content: content,
@@ -81,11 +96,11 @@ export class HomeComponent implements OnInit {
       .then(() => {
         console.log('editada');
         this.notes = [];
-        this.getNotes(this.getUser());
+        this.getNotes(userUid);
       });
   }
- async delete(idPost: string) {
-   await this.fs.deleteNote(idPost).then(() => {
+  async delete(idPost: string) {
+    await this.fs.deleteNote(idPost).then(() => {
       console.log('eliminada');
       this.notes = [];
       this.getNotes(this.getUser());
@@ -94,7 +109,9 @@ export class HomeComponent implements OnInit {
   getUser() {
     this.authService.getUserLogged().subscribe((res: any) => {
       this.userUid = res.uid;
+      console.log(res.uid);
     });
+
     return this.userUid;
   }
 }

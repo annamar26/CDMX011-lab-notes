@@ -9,7 +9,7 @@ export class FirestoreService {
 
   constructor(private firestore: AngularFirestore) {}
   getAllNotes (){
-    return this.firestore.collection('notes').snapshotChanges()
+    return this.firestore.collection('notes').stateChanges()
   }
   addNote(nota: Note){
     return this.firestore.collection('notes').add(nota)

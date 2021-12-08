@@ -1,5 +1,5 @@
 <section class="form-container">
-  <h2 class="formTitle">Inicia sesión</h2>
+  <h2 class="formTitle">{{title}}</h2>
 
   <mat-form-field>
     <input matInput type="email" #email placeholder="Correo electrónico" />
@@ -31,7 +31,7 @@
     color="primary"
     (click)="sendEmail({ email: email.value, password: password.value })"
   >
-    Iniciar sesión
+   {{button}}
   </button>
 
   

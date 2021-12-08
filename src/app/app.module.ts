@@ -12,7 +12,6 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HomeComponent } from './pages/home/home.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { RegisterFormComponent } from './components/register-form/register-form.component'; 
 import {MatIconModule} from '@angular/material/icon';
 import {GoogleLoginComponent} from '../app/components/google-login/google-login.component'
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -24,7 +23,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     LoginComponent,
     LoginFormComponent,
     HomeComponent,
-    RegisterFormComponent,
+   
     GoogleLoginComponent,
         
   ],

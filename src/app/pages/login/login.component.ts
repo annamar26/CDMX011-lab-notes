@@ -51,4 +51,7 @@ export class LoginComponent implements OnInit {
         alert('error, intente nuevamente');
       });
   }
+  changeTab(key: any){
+    console.log(key)
+  }
 }

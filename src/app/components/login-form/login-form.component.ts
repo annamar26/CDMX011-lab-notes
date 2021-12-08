@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
@@ -8,12 +8,27 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class LoginFormComponent implements OnInit {
   hide = true;
  @Output() userValues = new EventEmitter<object>() 
-
+ @Input() estado: string | undefined
+title : string |undefined
+button: string | undefined
 
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    switch (this.estado) {
+      case "login":
+        this.title= 'Inicia sesión'
+        this.button= 'Iniciar sesión'
+        break;
+        case "register":
+          this.title= 'Registrarse'
+          this.button= 'Crear cuenta'
+          break;
+      default:
+        break;
+    }
+    
   }
 sendEmail(valor: object){
  

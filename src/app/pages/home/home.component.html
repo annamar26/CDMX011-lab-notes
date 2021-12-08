@@ -1,7 +1,7 @@
 <mat-drawer-container class="sidenav-container"  >
   <mat-drawer #drawer class="sidenav" mode="side" >
     <button mat-raised-button (click)="logOut()">Salir</button>
-    <button mat-raised-button *ngIf="userLogged|async as user" (click)="getNotes(user.uid)">notas</button>
+    <!-- <button mat-raised-button *ngIf="userLogged|async as user" (click)="getNotes(user.uid)">notas</button> -->
   
     <p class="usuario" *ngIf="userLogged|async as user">{{user.email}}</p>
  
