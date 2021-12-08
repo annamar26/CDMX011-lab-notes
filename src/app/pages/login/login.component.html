@@ -2,11 +2,18 @@
 <mat-tab-group class="matTab-container">
 
   <mat-tab #tabHeader label="Iniciar sesión">
-    <app-login-form (userValues)="login($event, 'logIn')"></app-login-form
-  ></mat-tab>
+   <!-- <img class='logo' src="../../../assets/images/postLogo.png" alt=""> -->
+       <app-login-form (userValues)="login($event, 'logIn')"></app-login-form
+  >
+  <app-google-login (click)="googleLogin()"></app-google-login>
+  
+ 
+</mat-tab>
   <mat-tab label="Registarse"> 
      <app-register-form (userValues)="login($event, 'signUp')"></app-register-form
-    ></mat-tab>
+      
+    >
+    <app-google-login (click)="googleLogin()"></app-google-login></mat-tab>
 
 </mat-tab-group>
 </div>

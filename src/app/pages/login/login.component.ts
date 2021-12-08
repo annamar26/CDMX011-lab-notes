@@ -2,8 +2,6 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormValues } from 'src/app/classes/FormValues';
 import { AuthService } from 'src/app/services/auth.service';
 
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,26 +20,35 @@ export class LoginComponent implements OnInit {
     this.userData.email = event.email;
     this.userData.password = event.password;
     const { email, password } = this.userData;
-if(type === 'logIn'){
-  this.authService
-      .logIn(email, password)
-      .then((res) => {
-        window.location.href = '/home';
-       
-      })
-      .catch((err) => {
-        alert('error, intente nuevamente');
-      });}else{
-        this.authService
-        .signUp(email, password)
+    if (type === 'logIn') {
+      this.authService
+        .logIn(email, password)
         .then((res) => {
           window.location.href = '/home';
-         
+          
         })
         .catch((err) => {
           alert('error, intente nuevamente');
         });
-      }
-    
+    } else {
+      this.authService
+        .signUp(email, password)
+        .then((res) => {
+          window.location.href = '/home';
+        })
+        .catch((err) => {
+          alert('error, intente nuevamente');
+        });
+    }
   }
+  googleLogin() {
+    this.authService
+      .logInWithGoogle()
+      .then((res) => {
+        window.location.href = '/home';
+      })
+      .catch((err) => {
+        alert('error, intente nuevamente');
+      });
   }
+}

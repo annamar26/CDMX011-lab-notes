@@ -14,6 +14,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RegisterFormComponent } from './components/register-form/register-form.component'; 
 import {MatIconModule} from '@angular/material/icon';
+import {GoogleLoginComponent} from '../app/components/google-login/google-login.component'
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
     LoginFormComponent,
     HomeComponent,
     RegisterFormComponent,
+    GoogleLoginComponent,
         
   ],
   imports: [
@@ -33,7 +37,10 @@ import {MatIconModule} from '@angular/material/icon';
     FormsModule,
     MatTabsModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    MatIconModule
+    MatIconModule,
+    MatSidenavModule,
+ 
+  
    
 
     

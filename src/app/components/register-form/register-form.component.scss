@@ -1,15 +1,15 @@
-.form-container{
+.form-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 50vw;
-    height: 45vh;
-   margin-top: 5vh;
-   overflow-y: hidden;
-   overflow-x: hidden;
- 
-    mat-form-field{
-        width: 75%;
-        
-    }}
+    height: 60vh;
+    margin-top: 5vh;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  
+    mat-form-field {
+      width: 75%;
+    }
+    
+    }
