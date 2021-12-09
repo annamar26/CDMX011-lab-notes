@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { Note } from 'src/app/classes/Note';
 import { AuthService } from 'src/app/services/auth.service';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -11,6 +12,8 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class HomeComponent implements OnInit {
   userLogged = this.authService.getUserLogged();
   userUid = '';
+  inputValue = ''
+  input: any | undefined
   notes: Array<Note> = [];
   showFiller = false;
   userNote: Note = {
@@ -26,15 +29,16 @@ export class HomeComponent implements OnInit {
     this.getUser();
     setTimeout(() => {
       this.getNotes(this.userUid);
-    }, 1000);
+    }, 500);
 
     // this.getNotes(this.userUid)
   }
   logOut() {
     this.authService.logOut().then(() => (window.location.href = '/'));
   }
-   sendContent(content: string, id: string) {
-    this.notes = [];
+  sendContent(content: string, id: string) {
+   
+    let array = [];
     this.userNote.content = content;
     this.getUser();
     this.userNote.autor = id;
@@ -50,13 +54,11 @@ export class HomeComponent implements OnInit {
         autor: '',
         time: { date: '', hour: '' },
       };
-      
-     
-    });this.notes = []
-      this.notes = this.notes.filter(
-        (note: { autor: string }) => note.autor === id
-      );
-      console.log(this.notes)
+   this.notes = this.getNotes(this.userUid)})
+  
+
+    
+   
   }
   getNotes(id: string) {
     this.notes = [];
@@ -64,12 +66,12 @@ export class HomeComponent implements OnInit {
     this.fs.getAllNotes().subscribe((res: any) => {
       res.forEach((noteData: any) => {
         allNotes.push({
-          id: noteData.payload.doc.id,
-          autor: noteData.payload.doc.data().autor,
-          content: noteData.payload.doc.data().content,
+          id: noteData.id,
+          autor: noteData.data().autor,
+          content: noteData.data().content,
           time: {
-            date: noteData.payload.doc.data().date,
-            hour: noteData.payload.doc.data().hour,
+            date: noteData.data().date,
+            hour: noteData.data().hour,
           },
         });
       });
@@ -77,13 +79,13 @@ export class HomeComponent implements OnInit {
       this.notes = allNotes.filter(
         (note: { autor: string }) => note.autor === id
       );
-
     });
- 
-    console.log(this.notes);
+
+    return (this.notes);
   }
-  async editContent(content: string, idPost: string, userUid: string) {
-    await this.fs
+   editContent(content: string, idPost: string, userUid: string) { 
+    
+     this.fs
       .updateNote(idPost, {
         id: idPost,
         content: content,
@@ -95,16 +97,25 @@ export class HomeComponent implements OnInit {
       })
       .then(() => {
         console.log('editada');
-        this.notes = [];
-        this.getNotes(userUid);
+         this.notes =  this.getNotes(userUid)
+     
+       
       });
   }
-  async delete(idPost: string) {
-    await this.fs.deleteNote(idPost).then(() => {
-      console.log('eliminada');
-      this.notes = [];
-      this.getNotes(this.getUser());
-    });
+  delete(idPost: string) {
+ 
+   
+      this.fs
+        .deleteNote(idPost)
+        .then(
+          () =>
+          this.notes = this.getNotes(this.userUid)
+        );
+
+    //  .then(() => {
+    //   console.log('eliminada');
+
+    // });
   }
   getUser() {
     this.authService.getUserLogged().subscribe((res: any) => {
@@ -114,4 +125,7 @@ export class HomeComponent implements OnInit {
 
     return this.userUid;
   }
+ 
+
+
 }

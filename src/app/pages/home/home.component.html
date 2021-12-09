@@ -1,5 +1,5 @@
 <mat-drawer-container class="sidenav-container"  >
-  <mat-drawer #drawer class="sidenav" mode="side" >
+  <mat-drawer #drawer class="sidenav" mode="over" >
     <button mat-raised-button (click)="logOut()">Salir</button>
     <!-- <button mat-raised-button *ngIf="userLogged|async as user" (click)="getNotes(user.uid)">notas</button> -->
   
@@ -11,7 +11,7 @@
   <div class="sidenav-content">
     <div class="note-container">
       <textarea #note placeholder="escribe tu nota aquuí"></textarea>
-      <mat-icon matSuffix *ngIf="userLogged|async as user" class="agregar" (click)="sendContent(note.value, user.uid)"
+      <mat-icon matSuffix *ngIf="userLogged|async as user" class="agregar" (click)="sendContent(note.value, user.uid); note.value=''"
         >save_outlined</mat-icon
       >
     </div>
