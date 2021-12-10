@@ -1,67 +1,149 @@
-::-webkit-scrollbar {
-    display: none;
-}
-  .sidenav-container {
-  mat-drawer{
-    width: 30vw;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.685);
-    color: blanchedalmond;
+header {
+  background-image: linear-gradient(
+    to right,
+    #ff99a2,
+    #ffb7b2,
+    #ffdac1,
+    #e2f0cb,
+    #b5ead7,
+    #c7ceea
+  );
 
-}
   width: 100vw;
-  height: 100vh;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-  overflow {
-    overflow-y: auto;
-    overflow-x: hidden
-  };
-
-}
-
-.sidenav-content {
-  button{
-    justify-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 8vh;
+  button {
+    margin-right: 3vh;
+    color: rgb(80, 78, 74);
+    font-size: 3vh;
+    font-weight: bolder;
   }
- 
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: auto;
-  justify-content: center;
-  width: 100vw;
-  height: 92vh;
-  margin: 1vh 1vh 1vh 1vw;
-  overflow: clip;
+  img {
+    border-radius: 50%;
+    height: 80%;
+  }
+  .logo {
+    color: rgb(80, 78, 74);
+    font-family: "Tangerine", cursive;
+    font-size:7vh;
+    font-weight: 700;
+    -webkit-text-stroke: 0,5px rgb(255, 255, 255);
+    text-shadow: white 0.1em 0.1em 0.2em;
+text-align: left;
+width: 90%;
+justify-self: center;
+  }
+}
 
-  .note-container {
-    background-color: rgba(235, 233, 166, 0.863);
-    height: 27vh;
+.note-container {
+  height: 15vw;
+  width: 21vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5% 5% 5% 5%;
+  margin-left: 1vw;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  textarea {
+    border-radius: 5% 5% 5% 5%;
+    border: none;
+    height: 15vw;
+    resize: none;
     width: 20vw;
+    outline: none;
+  }
+
+  #note {
+    border-radius: 5% 5% 5% 5%;
+    border: none;
+    height: 15vw;
+    width: 21vw;
+    outline: none;
+    resize: none;
+  }
+}
+
+.sidenav-container {
+  mat-drawer {
+    right: 0;
+    background-image: linear-gradient(
+      to right,
+      #ff99a2,
+      #ffb7b2,
+      #ffdac1,
+      #e2f0cb,
+      #b5ead7,
+      #c7ceea
+    );
+    color: blanchedalmond;
+    width: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 5% 5% 5% 5%;
-    margin-left: 1vw;
-    textarea {
-      border-radius: 5% 5% 5% 5%;
-      border: none;
-      background-color: rgba(235, 233, 166, 0.863);
-      height: 22.8vh;
-      width: 20vw;
-      outline: none;
-      resize: none;
+    overflow: -moz-hidden-unscrollable;
+    .user {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      img {
+        margin-top: 6vh;
+        width: 15vw;
+        border-radius: 50%;
+      }
+      .logo {
+        font-family: "Tangerine", cursive;
+        font-size: 15vh;
+        font-weight: 700;
+        -webkit-text-stroke: 0,5px rgb(255, 255, 255);
+        text-shadow: white 0.1em 0.1em 0.2em
+      }
+      p {
+        font-size: 3vh;
+        font-weight: bolder;
+        margin-top: 2vh;
+        color: rgb(80, 78, 74);
+      }
+
+      button {
+        background-color: whitesmoke;
+        width: 15vw;
+        height: 6vh;
+        font-size: 2vh;
+        margin-top: 2.5vh;
+      }
     }
-    .agregar {
-      align-self: flex-end;
-      margin-right: 0.3vw;
-      color: rgb(61, 61, 65);
-    }
+  }
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: #f9fcff;
+  background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
+
+  background-repeat: no-repeat;
+  overflow {
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }
 
-.sidenav {
-  padding: 20px;
+.sidenav-content {
+  button {
+    justify-self: center;
+  }
+
+  display: grid;
+  grid-template-columns: repeat(4, 0.88fr);
+  column-gap: auto;
+  justify-content: center;
+  width: 100vw;
   height: 100vh;
+  margin: 1vh 1vh 1vh 1vw;
+  overflow-y: scroll;
 }

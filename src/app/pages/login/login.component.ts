@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FormValues } from 'src/app/classes/FormValues';
 import { AuthService } from 'src/app/services/auth.service';
+import { FirestoreService } from 'src/app/services/firestore.service';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,9 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
+  userUid: string = ''
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private fs: FirestoreService) {}
 
   ngOnInit(): void {}
   login(event: any, type: string) {
@@ -33,8 +35,15 @@ export class LoginComponent implements OnInit {
     } else {
       this.authService
         .signUp(email, password)
-        .then((res) => {
+        .then(() => {
+       this.authService.getUserLogged()
+       .subscribe((res: any) => {
+        this.userUid = res.uid;
+        console.log(this.userUid);
+        this.fs.addUser({}, this.userUid)
+      });
           window.location.href = '/home';
+        
         })
         .catch((err) => {
           alert('error, intente nuevamente');
@@ -45,7 +54,13 @@ export class LoginComponent implements OnInit {
     this.authService
       .logInWithGoogle()
       .then((res) => {
-        window.location.href = '/home';
+        this.authService.getUserLogged()
+        .subscribe((res: any) => {
+         this.userUid = res.uid;
+         console.log(this.userUid);
+         this.fs.addUser({}, this.userUid)
+       });
+           window.location.href = '/home';
       })
       .catch((err) => {
         alert('error, intente nuevamente');

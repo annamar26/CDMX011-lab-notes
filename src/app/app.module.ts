@@ -15,6 +15,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {GoogleLoginComponent} from '../app/components/google-login/google-login.component'
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatIconModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
+ 
  
   
    

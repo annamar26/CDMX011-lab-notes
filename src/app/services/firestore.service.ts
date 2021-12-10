@@ -8,19 +8,23 @@ import { Note } from '../classes/Note';
 export class FirestoreService {
 
   constructor(private firestore: AngularFirestore) {}
-  getAllNotes (){
-    return this.firestore.collection('notes').get()
+  getAllNotes (user: string){
+    return this.firestore.collection('users').doc(user).snapshotChanges()
+    
   }
-  addNote(nota: Note){
-    return this.firestore.collection('notes').add(nota)
+  addNote(user: string, changes: any){
+    return this.firestore.collection('users').doc(user).set(changes)
+  }
+  updateNote(user: string, changes: any){
+    return this.firestore.collection('users').doc(user).update(changes)
+  }
+  addUser(user: any, id: string){
+    return this.firestore.collection('users').doc(id).set(user)
   }
 
   deleteNote(documentId: string) {
     return this.firestore.collection('notes').doc(documentId).delete();
   }
    
-  updateNote(documentId: string, data: any) {
-    return this.firestore.collection('notes').doc(documentId).set(data);
-  }
-}
+ }
 
