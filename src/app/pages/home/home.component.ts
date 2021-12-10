@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
     time: { date: '', hour: '' },
     color: ''
   };
-  colors=['#FF99A2', '#FFB7B2', '#FFDAC1', '#E2F0CB', '#B5EAD7', '#C7CEEA'] 
-   inputColor= this.colors[Math.floor(Math.random() * this.colors.length)]
+  colors=['#FF99A2', '#FFB7B2', '#FFDAC1', '#D2F0A2', '#B5EAD7', '#C7CEEA'] 
+  inputColor= this.colors[Math.floor(Math.random() * this.colors.length)]
   static getUser: any;
   constructor(private fs: FirestoreService, private authService: AuthService) {}
 

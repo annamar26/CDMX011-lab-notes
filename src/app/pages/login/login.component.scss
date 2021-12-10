@@ -3,7 +3,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+    background-image: linear-gradient(
+        to right,
+        #ff99a2,
+        #ffb7b2,
+        #ffdac1,
+        #e2f0cb,
+        #b5ead7,
+        #c7ceea
+      );
     width: 100vw;
     height: 100vh;
     // .logo{
@@ -13,7 +21,7 @@
     //     z-index: -1;
     // }
     .matTab-container{
-    background-color: rgba(233, 237, 241, 0.726);
+    background-color: rgba(234, 240, 240, 0.89);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,6 +30,7 @@
     width:50vw;
     height: 75vh;
     overflow: hidden;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.445));
     
    }}
     
