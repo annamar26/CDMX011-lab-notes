@@ -2,17 +2,19 @@
   <mat-drawer #drawer class="sidenav" mode="over">
     <section *ngIf="userLogged | async as user" class="user">
       <img src="{{user.photoURL}}" class="photoURL">
-      <p class="logo">Labnotes</p>
+     
+ <img src="../../../assets/images/logolabNotes.png" alt="" class="logo">
       <p class="usuario" >{{user.displayName? user.displayName : user.email }}</p>
       <button mat-raised-button (click)="logOut()">Salir</button>
     </section>
   </mat-drawer>
   <header *ngIf="userLogged | async as user">
-    <p class="logo">Labnotes</p>
+    <img src="../../../assets/images/logolabNotes.png" alt="" class="logo">
+    <section class="header-buttons">
      <img src="{{user.photoURL}}" class="photoURL">
     <button class="Menu" type="button" mat-button (click)="drawer.toggle()">
       Menu
-    </button>
+    </button></section>
   </header>
 
   <div class="sidenav-content mat-drawer-content">
@@ -29,7 +31,17 @@
       *ngFor="let nota of notes"
       color="nota.color"
       [style.background-color]="nota.color"
+      
     >
+    <section class="borrar">
+      <mat-icon
+        matSuffix
+        *ngIf="userLogged | async as user"
+        class="agregar"
+    
+        (click)="delete(nota.id)"
+        >delete_outlined</mat-icon
+      ></section>
       <textarea
         [style.background-color]="nota.color"
         #noteEdit
@@ -38,13 +50,10 @@
         color="nota.color"
         >{{ nota.content }}</textarea
       >
-      <mat-icon
-        matSuffix
-        *ngIf="userLogged | async as user"
-        class="agregar"
-        (click)="delete(nota.id)"
-        >delete_outlined</mat-icon
-      >
+      
+      <section class="modified">
+      <p class="date">Ultima modificación: {{nota.time.date}} a las {{nota.time.hour}}</p>
+     </section>
     </div>
   </div>
 </mat-drawer-container>

@@ -3,6 +3,8 @@
 
   <mat-tab #tabHeader label="Iniciar sesión" >
    <!-- <img class='logo' src="../../../assets/images/postLogo.png" alt=""> -->
+   <section class='header'> <img src="../../../assets/images/logolabNotes.png" alt="" class="logo"></section>
+  
        <app-login-form (userValues)="login($event, 'logIn')" [estado]="'login'"></app-login-form
   >
   <app-google-login (click)="googleLogin()"></app-google-login>
@@ -13,6 +15,8 @@
      <!-- <app-register-form (userValues)="login($event, 'signUp')"></app-register-form
       
     > -->
+    <div class='header'>
+    <img src="../../../assets/images/logolabNotes.png" alt="" class="logo"></div>
     <app-login-form (userValues)="login($event, 'signUp')" [estado]="'register'"></app-login-form
       >
     <app-google-login (click)="googleLogin()"></app-google-login></mat-tab>

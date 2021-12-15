@@ -9,32 +9,45 @@ header {
     #c7ceea
   );
 
-  width: 100vw;
-  display: flex;
+   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   height: 8vh;
-  button {
-    margin-right: 3vh;
-    color: rgb(80, 78, 74);
-    font-size: 3vh;
-    font-weight: bolder;
+  width: 100%;
+
+
+  .header-buttons {
+    height: 8vh;
+ 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    button {
+     
+      color: rgb(80, 78, 74);
+      font-size: 3vh;
+      font-weight: bolder;
+    }
+    img {
+      border-radius: 50%;
+      height: 80%;
+    }
   }
-  img {
-    border-radius: 50%;
-    height: 80%;
-  }
+
   .logo {
     color: rgb(80, 78, 74);
     font-family: "Tangerine", cursive;
-    font-size:7vh;
+    font-size: 7vh;
     font-weight: 700;
-    -webkit-text-stroke: 0,5px rgb(255, 255, 255);
+    -webkit-text-stroke: 0, 5px rgb(255, 255, 255);
     text-shadow: white 0.1em 0.1em 0.2em;
-text-align: left;
-width: 90%;
-justify-self: center;
+    text-align: left;
+    justify-self: center;
+    width: 10vw;
+    height: 20vh;
+    left: 0;
   }
 }
 
@@ -46,7 +59,11 @@ justify-self: center;
   justify-content: center;
   align-items: center;
   border-radius: 5% 5% 5% 5%;
-  margin-left: 1vw;
+  justify-self: center;
+  align-self: center;
+
+
+
   filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.445));
   textarea {
     border-radius: 5% 5% 5% 5%;
@@ -64,6 +81,21 @@ justify-self: center;
     width: 21vw;
     outline: none;
     resize: none;
+  }
+  .modified {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vh;
+    height: 1.3vh;
+  }
+  .borrar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
   }
 }
 
@@ -101,8 +133,8 @@ justify-self: center;
         font-family: "Tangerine", cursive;
         font-size: 15vh;
         font-weight: 700;
-        -webkit-text-stroke: 0,5px rgb(255, 255, 255);
-        text-shadow: white 0.1em 0.1em 0.2em
+        -webkit-text-stroke: 0, 5px rgb(255, 255, 255);
+        text-shadow: white 0.1em 0.1em 0.2em;
       }
       p {
         font-size: 3vh;
@@ -120,30 +152,27 @@ justify-self: center;
       }
     }
   }
-  width: 100vw;
-  height: 100vh;
+ 
   border: 1px solid rgba(0, 0, 0, 0.5);
   background-color: #f9fcff;
   background-image: linear-gradient(147deg, #f9fcff 0%, #dee4ea 74%);
 
   background-repeat: no-repeat;
-  overflow {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
+ 
 }
 
 .sidenav-content {
   button {
     justify-self: center;
   }
-
+ justify-self: center;
+width: 100vw;
+overflow-x: hidden;
   display: grid;
-  grid-template-columns: repeat(4, 0.88fr);
-  column-gap: auto;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
-  margin: 1vh 1vh 1vh 1vw;
+  height: 92vh;
   overflow-y: scroll;
-}
+  overflow-x: hidden;
+  }
+ 
