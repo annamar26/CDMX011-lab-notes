@@ -1,25 +1,24 @@
-.container{
-position: absolute;
-height: 3vh;
-top: 50vh;
-display: flex;
-flex-direction: row;
-justify-content: center;
-width: 100%;
-height: 7vh;
-overflow: hidden;
-   
-  
-    .google-button {
-      width: 50%;
-      height: 80%;
-      display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-background-color: rgb(178, 126, 226);
-     .icon {
+.container {
+  position: absolute;
+  height: 3vh;
+  top: 50vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 7vh;
+  overflow: hidden;
+
+  .google-button {
+    width: 50%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(178, 126, 226);
+    .icon {
       width: 3.8vh;
     }
-}
+  }
 }
